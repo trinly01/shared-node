@@ -1,0 +1,52 @@
+{
+  "name": "shared-node",
+  "version": "1.0.2",
+  "description": "Call a remote function or method of a remote object from an  Express App that can be shared to any frontend frameworks.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trinly01/shared-node.git"
+  },
+  "keywords": [
+    "rpc",
+    "call",
+    "rpclib",
+    "rpclibrary",
+    "remote",
+    "procedure",
+    "remote procedure call",
+    "microservice",
+    "rest",
+    "unified application framework",
+    "tunnel",
+    "eventsourcing",
+    "agnostic",
+    "independent",
+    "framework",
+    "bind",
+    "application"
+  ],
+  "author": "Trinmar A Boado <timi.boado@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trinly01/ink-html/issues"
+  },
+  "homepage": "https://github.com/trinly01/ink-html#readme",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "store": "^2.0.12",
+    "uuid": "^8.3.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "babel-loader": "^8.2.2",
+    "webpack": "^5.10.0",
+    "webpack-cli": "^4.2.0"
+  }
+}
