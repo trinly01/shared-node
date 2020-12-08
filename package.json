@@ -1,6 +1,6 @@
 {
   "name": "shared-node",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Call a remote function or method of a remote object from an  Express App that can be shared to any frontend frameworks.",
   "main": "dist/index.js",
   "scripts": {
@@ -35,7 +35,7 @@
   "bugs": {
     "url": "https://github.com/trinly01/ink-html/issues"
   },
-  "homepage": "https://github.com/trinly01/ink-html#readme",
+  "homepage": "https://github.com/trinly01/shared-node#readme",
   "dependencies": {
     "axios": "^0.21.0",
     "cors": "^2.8.5",
