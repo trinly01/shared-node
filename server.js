@@ -26,14 +26,11 @@ class  Person {
 const  human = new  Person()
 human.name = 'Mr. Pogi'
 
-const { sharedCodeServer } = require('./dist/index.js')
+const { sharedCodeServer } = require('./index.js')
 
-app.use(sharedCodeServer([
-	{
-		address:  'human', // optional
-		obj:  human
-	}
-]))
+app.use(sharedCodeServer({
+  human
+}))
 
 // const clientHuman = sharedCode()
 // clientHuman.obj('testing', 1)

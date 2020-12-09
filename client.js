@@ -12,12 +12,7 @@ let objs = {}
 async function init () {
   const { sharedCodeClient } = require('./index.js')
 
-  objs = await sharedCodeClient('http://localhost:3000', [
-    {
-      address: 'human',
-      name: 'human'
-    }
-  ])
+  objs = await sharedCodeClient('http://localhost:3000')
 }
 init()
 

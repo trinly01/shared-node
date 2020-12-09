@@ -44,40 +44,31 @@ app.use(cors())
 app.listen(3000)
 
 class  Person {
-	constructor() {
-		this.name = 'Trinmar Pogi'
-	}
-	run (speed) {
-		return `${this.name} is running at ${speed}km/h`
-	}
+  constructor() {
+    this.name = 'Trinmar Pogi'
+  }
+  run (speed) {
+    return `${this.name} is running at ${speed}km/h`
+  }
 }
 
 const  human = new  Person()
 human.name = 'Mr. Pogi'
 
+// see the magic here 🧙
 const { sharedCodeServer } = require('shared-node')
 
-app.use(sharedCodeServer([
-	{
-		address:  'human', // optional
-		obj:  human
-	}
-]))
+app.use(sharedCodeServer({ human }))
 ```
 
 ## Client
 ```javascript
-async  function  init () {
-	const { sharedCodeClient } = require('shared-node')
-	// const { sharedCodeClient } = sharedNode // for CDN
-	
-	const { human } = await  sharedCodeClient('http://localhost:3000', [
-		{
-			address:  'human',
-			name:  'human'
-		}
-	])
-	console.log(await  human.run(100)) // Mr. Pogi is running at 100km/h
+async function init () {
+  const { sharedCodeClient } = require('shared-node')
+  // const { sharedCodeClient } = sharedNode // for CDN
+
+  const { human } = await sharedCodeClient('http://localhost:3000')
+  console.log(await  human.run(100)) // Mr. Pogi is running at 100km/h
 }
 init()
 ```
