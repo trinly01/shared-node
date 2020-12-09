@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <script  src="https://unpkg.com/shared-node/dist/index.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/shared-node@1.0.4/dist/index.js"></script>
 </head>
 <body>
-  <script>
-    async  function  init () {
-      // const { sharedCodeClient } = require('shared-node')
-      const { sharedCodeClient } = sharedNode // for CDN
-      
-      const { human } = await  sharedCodeClient('http://localhost:3000', [
-        {
-          address:  'human',
-          name:  'human'
+    <script>
+        const { sharedCodeClient } = sharedNode;
+        let global = {};
+
+        (async () => {
+           global = { human } = await sharedCodeClient('http://localhost:3000')
+           console.log(await human.run(999))
+        })()
+
+        async function run (speed) {
+            document.body.innerHTML += '<br/>' + await global.human.run(speed);
         }
-      ])
-      document.write(await  human.run(100)) // Mr. Pogi is running at 100km/h
-    }
-    init()
-  </script>
+    </script>
+    <button onclick="run(100)">slow</button>
+    <button onclick="run(555)">medium</button>
+    <button onclick="run(888)">fast</button>
+    
 </body>
 </html>

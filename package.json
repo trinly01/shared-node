@@ -1,6 +1,6 @@
 {
   "name": "shared-node",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Call a remote function or method of a remote object from an  Express App that can be shared to any frontend frameworks.",
   "main": "dist/index.js",
   "scripts": {
