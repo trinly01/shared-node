@@ -10,7 +10,7 @@
 
   
 
-**Call a remote function or method of a remote object from an  Express App** that can be shared to any frontend frameworks.
+**Directly call a function or method of a remote object** that can be shared with any frontend frameworks.
 
 
 ## Installation
@@ -33,31 +33,34 @@ yarn add shared-node
 
 ```javascript
 // Server.js
-const  express = require('express')
-const  app = express()
-const  bodyParser = require('body-parser')
+const express = require('express')
+const app = express()
+const bodyParser = require('body-parser')
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended:  true }))
-const  cors = require('cors')
+app.use(bodyParser.urlencoded({ extended: true }))
+const cors = require('cors')
 app.use(cors())
-
 app.listen(3000)
 
-class  Person {
+class Person {
   constructor() {
     this.name = 'Trinmar Pogi'
   }
-  run (speed) {
+  run(speed) {
     return `${this.name} is running at ${speed}km/h`
+  }
+  eat(food) {
+    return `${this.name} is eating ${food}`
+  }
+  talk(speech) {
+    return speech
   }
 }
 
-const  human = new  Person()
-human.name = 'Mr. Pogi'
+let human = new Person('Trinmar Pogi')
 
 // see the magic here 🧙
 const { sharedCodeServer } = require('shared-node')
-
 app.use(sharedCodeServer({ human }))
 ```
 

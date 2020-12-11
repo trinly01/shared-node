@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://unpkg.com/shared-node@1.0.4/dist/index.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/shared-node/dist/index.js"></script>
 </head>
+
 <body>
-    <script>
-        const { sharedCodeClient } = sharedNode;
-        let global = {};
+  <button onclick="run(100)">slow</button>
+  <button onclick="eat('big banana')">medium</button>
+  <button onclick="talk('ang pogi ko')">fast</button>
+  <script>
+    const { sharedCodeClient } = sharedNode;
+    let person = null;
+    (async () => {
+      const { human } = await sharedCodeClient('http://localhost:3000')
+      person = human
+      console.log(await human.run(999))
+    })()
 
-        (async () => {
-           global = { human } = await sharedCodeClient('http://localhost:3000')
-           console.log(await human.run(999))
-        })()
-
-        async function run (speed) {
-            document.body.innerHTML += '<br/>' + await global.human.run(speed);
-        }
-    </script>
-    <button onclick="run(100)">slow</button>
-    <button onclick="run(555)">medium</button>
-    <button onclick="run(888)">fast</button>
-    
+    const run = async speed => alert(await person.run(speed))
+    const eat = async food => alert(await person.eat(food))
+    const talk = async speech => alert(await person.talk(speech))
+  </script>
 </body>
+
 </html>
