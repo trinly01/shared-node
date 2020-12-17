@@ -17,8 +17,10 @@ class Person {
   eat(food) {
     return `${this.name} is eating ${food}`
   }
-  talk(speech) {
+  async talk(speech) {
+    await new Promise(r => setTimeout(r, 2000))
     return speech
+    
   }
 }
 
